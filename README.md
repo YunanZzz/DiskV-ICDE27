@@ -97,16 +97,22 @@ Recommended parameters for the **SIFT1B**, **DEEP1B**, and **Text2Image1B** data
 | Parameter | Description | Default Value |
 |-----------|-------------|---------------|
 | `partition` | Number of segments | `10` |
-| `nlist` | Number of buckets in each segment | `200,000` (for all datasets) |
+| `nlist` | Number of buckets in each segment | `200,000` (for all datasets), ~500 primary vectors for each buckets in 100M dataset |
+| `r` | Maximum number of replicas for each vector | `2` |
 | `ratio` | Sampling ratio used during IVF_PQ clustering | `10` (i.e., sample 10%) |
 | `m` | Number of sub-vectors in IVF_PQ | `16` (SIFT1B); `24` (DEEP1B); `100` (Text2Image1B) |
-| `c_pq` | Number of clusters per sub-vector space | `256` |
-| `M` | Maximum neighbor count for the centroid graph | `16` |
-| `efb` | Priority queue length during centroid-graph construction | `75` |
-| `efs` | Priority queue length during centroid-graph search | `150` |
+| `c_pq` | Number of clusters per sub-vector space | `256` (1 byte for each sub-vector) |
+| `M` | Maximum neighbor count for the graph index | `64` |
+| `efb` | Priority queue length during graph index construction | `128` |
+| `Mc` | Maximum neighbor count for the centroid graph | `16` |
+| `efbc` | Priority queue length during centroid-graph construction | `75` |
+| `efsc` | Priority queue length during centroid-graph search | `150` |
 | `N` | Number of lists to probe during search | `200` |
 | `f` | Number of lists to search with sequential I/O | Auto-adjusted (typically `3` for SSD/GP3, `30` for HDD) |
+| `l` | AIO batch length | `5` (buckets) |
+| `w` | PQ lookahead window | `5` (batches) |
 | `ε` (epsilon) | Estimated filtering factor | `0.03` |
+| `C`  | Linux AIO context capacity | `1024` |
 
 
 ------
