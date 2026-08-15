@@ -192,7 +192,7 @@ The query sets for each segment are the same as the query sets from the whole da
 ##### Cache Performance on Local SSD for SIFT1B:
 <img src="figures/cache.png" alt="Cache Performance" width="400">
 
-##### Impact of 𝜀:
+##### Impact of 𝜀 on Local SSD and HDD for SIFT1B:
 <img src="figures/theta.png" alt="Impact of 𝜀" width="400">
 
 
